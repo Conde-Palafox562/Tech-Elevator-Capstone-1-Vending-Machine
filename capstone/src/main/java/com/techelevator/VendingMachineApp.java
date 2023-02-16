@@ -10,16 +10,20 @@ import java.util.TreeMap;
 
 public class VendingMachineApp {
 
-    Map<String, VendingMachineItem> productSelected = new TreeMap<>();
+    private Map<String, VendingMachineItem> productSelected = new TreeMap<>();
 
+
+    public Map<String, VendingMachineItem> getProductSelected() {
+        return productSelected;
+    }
 
     public VendingMachineApp() {
 
-        String fileName = "vendingmachine.csv";
+        String itemMenu = "vendingmachine.csv";
 
 
         //They gave us a file name, so let's create a file object
-        File file = new File(fileName);
+        File file = new File(itemMenu);
 
         //Because the file is an external resource and may have been deleted at some point,
         // or the user gave us the wrong path - we want to make sure this is in a try
@@ -67,14 +71,16 @@ public class VendingMachineApp {
 
                 //Iterate through our map and print out all of our categories and totals
                 for (Map.Entry<String, VendingMachineItem> entry : productSelected.entrySet()) {
-                    System.out.println(entry.getKey() + ": $" + entry.getValue());
+             //       System.out.println(entry.getKey() + ": $" + entry.getValue());
                 }
             }
         } catch (Exception ex) {
             System.out.println("Something went wrong");
         }
     }
+public void purchase() {
 
+}
 
 }
 

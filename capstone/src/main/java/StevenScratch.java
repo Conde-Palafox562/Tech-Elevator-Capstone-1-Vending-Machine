@@ -2,22 +2,12 @@ public class StevenScratch {
 }
 /*
 
-Vending Maching Interface is similar to ATM
-Vending Maching is same as Customer
-Vending Machine Item is Bank Account (Parent)
-CLass Drink - "Glug Glug, Yum!"
-Class Candy - "Munch Munch, Yum!"
-Class Chip - "Crunch Crunch, Yum!"
-Class Gum - "Chew Chew, Yum!"
+
+
         Slot# | Item Name | Price |
 Sounds to Print
 
-Inventory
-map for inventory
-keep track of slot location
-map of items/qty
-** is this a for loop with a decrement?
-starting with 5 then 4 then 3 then 2 then 1 then "sold out"
+
 
 
 
