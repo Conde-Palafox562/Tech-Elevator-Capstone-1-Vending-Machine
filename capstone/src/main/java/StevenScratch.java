@@ -16,6 +16,17 @@ Inventory
 map for inventory
 keep track of slot location
 map of items/qty
+** is this a for loop with a decrement?
+starting with 5 then 4 then 3 then 2 then 1 then "sold out"
+
+
+
+
+
+
+
+
+
 
 Hard code Inventory to 5 at each initial run
 //Welcome message to include the
