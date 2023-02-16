@@ -70,7 +70,7 @@ package vendingmachine.project
 
 public class Main {
 
-public statis void Main(String[] args) {
+public static void Main(String[] args) {
 
     Scanner scanner = new Scanner(System.in);
     VendingMachine vendingMachine = null //need to initialize
