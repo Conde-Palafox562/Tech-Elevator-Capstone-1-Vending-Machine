@@ -38,7 +38,7 @@ public class VendingMachineCLI {
 				Scanner userInput = new Scanner(System.in);
 				System.out.print("Please enter the item number");
 				String productSelected = userInput.nextLine(); {
-					choice = (String) ;
+					System.out.println();
 
 				}
 
@@ -56,12 +56,19 @@ public class VendingMachineCLI {
 			String choice = (String) menu.getChoiceFromOptions(SUB_MENU_OPTIONS);
 
 			if (choice.equals(SUB_MENU_OPTION_FEED_MONEY)) {
-				break;
+				Scanner userInput = new Scanner(System.in);
+				System.out.print("Please insert bills only $1 / $5 / $10");
+				String productSelected = userInput.nextLine();
+				;
 			}
 			else if (choice.equals(SUB_MENU_OPTION_SELECT_PRODUCT)) {
-				break;
+				Scanner userInput = new Scanner(System.in);
+				System.out.print("Please enter the new item number");
+				String productSelected = userInput.nextLine();
 			}
 			else if (choice.equals(SUB_MENU_FINISH_TRANSACTION)) {
+				//This should give change and vend product and return to Main menu when completed
+
 				break;
 			}
 		}
