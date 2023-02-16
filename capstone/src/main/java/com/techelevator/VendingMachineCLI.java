@@ -38,7 +38,7 @@ public class VendingMachineCLI {
 				Scanner userInput = new Scanner(System.in);
 				System.out.print("Please enter the item number");
 				String productSelected = userInput.nextLine(); {
-					String choice = (String) menu.getChoiceFromUserInput();
+					choice = (String) ;
 
 				}
 
