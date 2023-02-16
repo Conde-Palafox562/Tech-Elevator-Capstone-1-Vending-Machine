@@ -3,6 +3,8 @@ package com.techelevator;
 import com.techelevator.view.Menu;
 
 import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
 
 public class VendingMachineCLI {
 
@@ -17,6 +19,7 @@ public class VendingMachineCLI {
 
 	private Menu menu;
 	private VendingMachineApp vendingMachine = new VendingMachineApp();
+	private Map<String, VendingMachineItem> productSelected = new TreeMap<>();
 
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
@@ -32,6 +35,13 @@ public class VendingMachineCLI {
 				System.out.println(entry.getKey()+" "+ entry.getValue().getName()+" "+ entry.getValue().getPrice()+" "+ entry.getValue().getQty());
 			}
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
+				Scanner userInput = new Scanner(System.in);
+				System.out.print("Enter your selection ");
+				String productSelected = userInput.nextLine();
+
+
+
+
 
 				runSubMenu();
 			} else if(choice.equals(MAIN_MENU_EXIT)) {
