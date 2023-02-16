@@ -10,10 +10,10 @@ public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String MAIN_MENU_EXIT = "Exit";
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_EXIT };
-	private static final String SUB_MENU_OPTION_DISPLAY_ITEMS = "Feed Money";
-	private static final String SUB_MENU_OPTION_PURCHASE = "Select Product";
-	private static final String SUB_MENU_EXIT = "Finish Transaction";
-	private static final String[] SUB_MENU_OPTIONS = { SUB_MENU_OPTION_DISPLAY_ITEMS, SUB_MENU_OPTION_PURCHASE, SUB_MENU_EXIT };
+	private static final String SUB_MENU_OPTION_FEED_MONEY = "Feed Money";
+	private static final String SUB_MENU_OPTION_SELECT_PRODUCT = "Select Product";
+	private static final String SUB_MENU_FINISH_TRANSACTION = "Finish Transaction";
+	private static final String[] SUB_MENU_OPTIONS = { SUB_MENU_OPTION_FEED_MONEY, SUB_MENU_OPTION_SELECT_PRODUCT, SUB_MENU_FINISH_TRANSACTION };
 
 	private Menu menu;
 	private VendingMachineApp vendingMachine = new VendingMachineApp();
@@ -44,9 +44,14 @@ public class VendingMachineCLI {
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(SUB_MENU_OPTIONS);
 
-			if (choice.equals(SUB_MENU_EXIT)) {
+			if (choice.equals(SUB_MENU_OPTION_FEED_MONEY)) {
 				break;
-
+			}
+			else if (choice.equals(SUB_MENU_OPTION_SELECT_PRODUCT)) {
+				break;
+			}
+			else if (choice.equals(SUB_MENU_FINISH_TRANSACTION)) {
+				break;
 			}
 		}
 	}
