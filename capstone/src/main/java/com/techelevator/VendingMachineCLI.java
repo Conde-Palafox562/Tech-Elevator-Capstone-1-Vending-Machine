@@ -2,8 +2,10 @@ package com.techelevator;
 
 import com.techelevator.view.Menu;
 
+
 import java.math.BigDecimal;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.TreeMap;
 
@@ -18,8 +20,8 @@ public class VendingMachineCLI extends VendingMachineItem {
     private static final String SUB_MENU_FINISH_TRANSACTION = "Finish Transaction";
     private static final String[] SUB_MENU_OPTIONS = {SUB_MENU_OPTION_FEED_MONEY, SUB_MENU_OPTION_SELECT_PRODUCT, SUB_MENU_FINISH_TRANSACTION};
 
-    private Menu menu;
-    private VendingMachineApp vendingMachine = new VendingMachineApp();
+    public Menu menu;
+    public VendingMachineApp vendingMachine = new VendingMachineApp();
     private Map<String, VendingMachineItem> productSelected = new TreeMap<>();
     private VendingMachineItem itemsInMachine = new VendingMachineItem();
 
@@ -57,19 +59,19 @@ public class VendingMachineCLI extends VendingMachineItem {
             if (choice.equals(SUB_MENU_OPTION_FEED_MONEY)) {
                 Scanner userInput = new Scanner(System.in);
                 System.out.print("Please insert bills only -> $1 / $5 / $10: ");
-                String productSelected = userInput.nextLine();
-                BigDecimal amount = new BigDecimal(productSelected);
+                String customerMoney = userInput.nextLine();
+                BigDecimal amount = new BigDecimal(customerMoney);
                 vendingMachine.setBalance(amount);
+                System.out.println("Current balance is: $" + customerMoney);
             } else if (choice.equals(SUB_MENU_OPTION_SELECT_PRODUCT)) {
                 Scanner userInput = new Scanner(System.in);
                 System.out.print("Please enter the item slot number: ");
                 String productSelected = userInput.nextLine();
-                //if (vendingMachine.getBalance() >= VendingMachineItem.getPrice()) ;
-                //return getSound;
+                if(Objects.equals(vendingMachine.getBalance(), itemsInMachine.getPrice())) ;
+                System.out.println(itemsInMachine.getSound());
+                //Need to know if this is the right functionality^
 
-                // need to check for balance
-                // if enough getsound
-                // if not send back to FEED MONEY
+
             } else if (choice.equals(SUB_MENU_FINISH_TRANSACTION)) {
                 System.out.println("Thank You, Come again soon!");
                 //This should give change and vend product and return to Main menu when completed
