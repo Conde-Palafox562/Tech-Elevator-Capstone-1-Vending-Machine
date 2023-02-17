@@ -60,7 +60,7 @@ public class CalculatorInterfaceVM {
         //zero out balance
         vendingMachine.getBalance() = vendingMachine.getBalance().subtract(balance);
 
-        out.print(System.lineSeparator() + "Please take your chance. Thank you and come again!");
+        out.print(System.lineSeparator() + "Please take your change. Thank you and come again!");
         out.flush();
 
     }
