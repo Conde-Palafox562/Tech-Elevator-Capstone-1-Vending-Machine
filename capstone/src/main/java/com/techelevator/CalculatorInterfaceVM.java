@@ -12,6 +12,11 @@ import java.util.TreeMap;
 public class CalculatorInterfaceVM {
 
     private Map<String, VendingMachineItem> productSelected = new TreeMap<>();
+
+    public CalculatorInterfaceVM() {
+
+    }
+
     public Map<String, VendingMachineItem> getProductSelected() {
         return productSelected;
     }
@@ -25,8 +30,10 @@ public class CalculatorInterfaceVM {
         this.in = new Scanner(input);
     }
 
-    public static void finishTransaction() {
+    public void finishChange(VendingMachineApp vendingMachine) {
         //return change
+
+
         System.out.println("Change dispensed: $" + vendingMachine.getBalance());
 
         BigDecimal changeBalance = vendingMachine.getBalance();
@@ -42,26 +49,26 @@ public class CalculatorInterfaceVM {
 
         while (vendingMachine.getBalance().compareTo(quarterValue) >= 0) {
             quarters++;
-            vendingMachine.getBalance() = vendingMachine.getBalance().subtract(quarterValue);
+            vendingMachine.setBalance(vendingMachine.getBalance().subtract(quarterValue));
         }
 
         while (vendingMachine.getBalance().compareTo(dimeValue) >= 0) {
             dimes++;
-            vendingMachine.getBalance() = vendingMachine.getBalance().subtract(dimeValue);
+            vendingMachine.setBalance(vendingMachine.getBalance().subtract(dimeValue));
         }
 
         while (vendingMachine.getBalance().compareTo(nickelValue) >= 0) {
             nickels++;
-            vendingMachine.getBalance() = vendingMachine.getBalance().subtract(nickelValue);
+            vendingMachine.setBalance(vendingMachine.getBalance().subtract(nickelValue));
         }
 
         System.out.println("Quarters: " + quarters + ", " + "Dimes: " + dimes + ", " + "Nickels: " + nickels);
 
         //zero out balance
-        vendingMachine.getBalance() = vendingMachine.getBalance().subtract(balance);
+        BigDecimal VendingMachineApp = vendingMachine.getBalance().subtract(balance);
 
-        out.print(System.lineSeparator() + "Please take your change. Thank you and come again!");
-        out.flush();
+        System.out.print(System.lineSeparator() + "Please take your change. Thank you and come again!");
+
 
     }
 }

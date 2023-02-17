@@ -24,6 +24,7 @@ public class VendingMachineCLI extends VendingMachineItem {
     public VendingMachineApp vendingMachine = new VendingMachineApp();
     private Map<String, VendingMachineItem> productSelected = new TreeMap<>();
     private VendingMachineItem itemsInMachine = new VendingMachineItem();
+    public CalculatorInterfaceVM checkOut = new CalculatorInterfaceVM();
 
     public VendingMachineCLI(Menu menu) {
         this.menu = menu;
@@ -86,7 +87,8 @@ public class VendingMachineCLI extends VendingMachineItem {
 
 
             } else if (choice.equals(SUB_MENU_FINISH_TRANSACTION)) {
-                System.out.println("Thank You, Come again soon!");
+                checkOut.finishChange(vendingMachine);
+
 
                 //This should give change and vend product and return to Main menu when completed
 
