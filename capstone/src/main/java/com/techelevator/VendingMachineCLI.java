@@ -27,6 +27,10 @@ public class VendingMachineCLI {
 
 	public void run() {
 		while (true) {
+			System.out.println("*******************************");
+			System.out.println("Welcome to the Vendo-Matic 800!");
+			System.out.println("*******************************");
+
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
@@ -34,15 +38,10 @@ public class VendingMachineCLI {
 
 				System.out.println(entry.getKey()+" "+ entry.getValue().getName()+" "+ entry.getValue().getPrice()+" "+ entry.getValue().getQty());
 			}
+
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
-				Scanner userInput = new Scanner(System.in);
-				System.out.print("Please enter the item number");
-				String productSelected = userInput.nextLine(); {
-					System.out.println();
-
-				}
-
 				runSubMenu();
+
 			} else if(choice.equals(MAIN_MENU_EXIT)) {
 				break;
 			}
@@ -55,13 +54,12 @@ public class VendingMachineCLI {
 
 			if (choice.equals(SUB_MENU_OPTION_FEED_MONEY)) {
 				Scanner userInput = new Scanner(System.in);
-				System.out.print("Please insert bills only $1 / $5 / $10");
+				System.out.print("Please insert bills only -> $1 / $5 / $10: ");
 				String productSelected = userInput.nextLine();
-				;
 			}
 			else if (choice.equals(SUB_MENU_OPTION_SELECT_PRODUCT)) {
 				Scanner userInput = new Scanner(System.in);
-				System.out.print("Please enter the new item number");
+				System.out.print("Please enter the item slot number: ");
 				String productSelected = userInput.nextLine();
 			}
 			else if (choice.equals(SUB_MENU_FINISH_TRANSACTION)) {
