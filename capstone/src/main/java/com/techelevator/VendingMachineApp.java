@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import com.techelevator.view.Menu;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
@@ -9,6 +11,7 @@ import java.util.Scanner;
 import java.util.TreeMap;
 
 public class VendingMachineApp {
+    private Menu menu;
 
     private Map<String, VendingMachineItem> productSelected = new TreeMap<>();
 
