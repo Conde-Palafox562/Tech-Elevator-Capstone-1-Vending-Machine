@@ -5,8 +5,7 @@ import java.util.*;
 
 
 public class CalculatorInterfaceVM {
-/*
-}
-public CalculatorInterfaceVM() {
-    counter =0;*/
+
+
+
 }

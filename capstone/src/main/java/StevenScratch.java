@@ -86,7 +86,29 @@ public class ChangeCalculator
 }
 
 
+ public CalculatorInterfaceVM() {
+        BigDecimal NumberOfMoney = new BigDecimal(0);
+        BigDecimal NumberOfCoins = NumberOfMoney;
 
+        System.out.println("Amount of Money: " + NumberOfMoney + "\n");
+
+        //int NumberOfDollars = (int) (NumberOfCoins / 100);
+
+        NumberOfCoins = NumberOfCoins - 100 * NumberOfDollars;
+        System.out.println("Dollars: " + NumberOfDollars);
+
+        int NumberOfQuarters = (int) (NumberOfCoins / 25);
+        NumberOfCoins = NumberOfCoins - 25 * NumberOfQuarters;
+        System.out.println("Quarters: " + NumberOfQuarters);
+
+        int NumberOfDimes = (int) (NumberOfCoins / 10);
+        NumberOfCoins = NumberOfCoins - 10 * NumberOfDimes;
+        System.out.println("Dimes: " + NumberOfDimes);
+
+        BigDecimal NumberOfNickels =  (NumberOfCoins );
+        NumberOfCoins = NumberOfCoins - NumberOfNickels;
+        System.out.println("Nickels: " + NumberOfNickels);
+    }
  */
 
 

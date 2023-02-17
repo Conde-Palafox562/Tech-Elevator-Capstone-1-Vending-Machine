@@ -87,6 +87,7 @@ public class VendingMachineCLI extends VendingMachineItem {
 
             } else if (choice.equals(SUB_MENU_FINISH_TRANSACTION)) {
                 System.out.println("Thank You, Come again soon!");
+
                 //This should give change and vend product and return to Main menu when completed
 
                 break;
