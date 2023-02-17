@@ -14,6 +14,7 @@ public class VendingMachineApp {
     private Menu menu;
 
     private Map<String, VendingMachineItem> productSelected = new TreeMap<>();
+    private BigDecimal balance = new BigDecimal(0);
 
     public Map<String, VendingMachineItem> getProductSelected() {
         return productSelected;
@@ -77,7 +78,16 @@ public class VendingMachineApp {
             System.out.println("Something went wrong");
         }
     }
-public void purchase() {
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
+    public void purchase() {
 
 }
 
