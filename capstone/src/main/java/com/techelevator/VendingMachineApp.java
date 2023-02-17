@@ -12,7 +12,6 @@ public class VendingMachineApp {
 
     private Map<String, VendingMachineItem> productSelected = new TreeMap<>();
 
-
     public Map<String, VendingMachineItem> getProductSelected() {
         return productSelected;
     }
@@ -21,7 +20,6 @@ public class VendingMachineApp {
 
         String itemMenu = "vendingmachine.csv";
 
-
         //They gave us a file name, so let's create a file object
         File file = new File(itemMenu);
 
@@ -29,7 +27,6 @@ public class VendingMachineApp {
         // or the user gave us the wrong path - we want to make sure this is in a try
         // because there is an opportunity for it to throw an exception
         try (Scanner fileScanner = new Scanner(file)) {
-
 
             //As long as there is a line of text in the file to read,
             // keep reading it
@@ -68,7 +65,6 @@ public class VendingMachineApp {
 
                 }
 
-
                 //Iterate through our map and print out all of our categories and totals
                 for (Map.Entry<String, VendingMachineItem> entry : productSelected.entrySet()) {
              //       System.out.println(entry.getKey() + ": $" + entry.getValue());
@@ -83,8 +79,3 @@ public void purchase() {
 }
 
 }
-
-
-
-
-

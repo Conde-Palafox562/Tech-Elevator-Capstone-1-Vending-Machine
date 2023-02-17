@@ -10,13 +10,11 @@ public class VendingMachineItem {
     private int qty = 5;
     private String sound = "";
 
-
     public VendingMachineItem(String slotNumber, String name, BigDecimal price,String sound) {
         this.slotNumber = slotNumber;
         this.name = name;
         this.price = price;
         this.sound = sound;
-
 
     }
     public String getSound(){
@@ -57,6 +55,5 @@ public class VendingMachineItem {
     public void setQty(int qty) {
         this.qty = qty;
     }
-
 
 }

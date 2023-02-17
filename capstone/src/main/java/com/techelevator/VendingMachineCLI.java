@@ -42,8 +42,6 @@ public class VendingMachineCLI {
 
 				}
 
-
-
 				runSubMenu();
 			} else if(choice.equals(MAIN_MENU_EXIT)) {
 				break;
@@ -73,9 +71,6 @@ public class VendingMachineCLI {
 			}
 		}
 	}
-
-
-
 
 	public static void main(String[] args) {
 		Menu menu = new Menu(System.in, System.out);
