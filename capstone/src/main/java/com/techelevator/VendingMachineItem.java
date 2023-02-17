@@ -17,6 +17,11 @@ public class VendingMachineItem {
         this.sound = sound;
 
     }
+
+    public VendingMachineItem() {
+
+    }
+
     public String getSound(){
         return sound;
     }
