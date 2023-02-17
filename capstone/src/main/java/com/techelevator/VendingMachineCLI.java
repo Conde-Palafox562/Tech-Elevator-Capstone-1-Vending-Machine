@@ -57,18 +57,31 @@ public class VendingMachineCLI extends VendingMachineItem {
             String choice = (String) menu.getChoiceFromOptions(SUB_MENU_OPTIONS);
 
             if (choice.equals(SUB_MENU_OPTION_FEED_MONEY)) {
+                String customerMoney;
+
                 Scanner userInput = new Scanner(System.in);
                 System.out.print("Please insert bills only -> $1 / $5 / $10: ");
-                String customerMoney = userInput.nextLine();
+
+                customerMoney = userInput.nextLine();
                 BigDecimal amount = new BigDecimal(customerMoney);
-                vendingMachine.setBalance(amount);
-                System.out.println("Current balance is: $" + customerMoney);
-            } else if (choice.equals(SUB_MENU_OPTION_SELECT_PRODUCT)) {
+                vendingMachine.setBalance(amount.add(vendingMachine.getBalance()));
+                System.out.println("Current balance is: $" + vendingMachine.getBalance());
+
+           } else if (choice.equals(SUB_MENU_OPTION_SELECT_PRODUCT)) {
                 Scanner userInput = new Scanner(System.in);
                 System.out.print("Please enter the item slot number: ");
                 String productSelected = userInput.nextLine();
-                if(Objects.equals(vendingMachine.getBalance(), itemsInMachine.getPrice())) ;
-                System.out.println(itemsInMachine.getSound());
+                VendingMachineItem item = vendingMachine.getProductSelected().get(productSelected);
+
+                if(vendingMachine.getBalance().compareTo(item.getPrice())>=0){
+                    System.out.println(item.getSound());
+                    vendingMachine.setBalance(vendingMachine.getBalance().subtract(item.getPrice()));
+                    System.out.println("Your new balance is: $" + vendingMachine.getBalance());
+
+                } else {
+                    System.out.println("Insufficient Funds please Feed Money");
+                }
+
                 //Need to know if this is the right functionality^
 
 
