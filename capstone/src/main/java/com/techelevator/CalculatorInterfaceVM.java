@@ -67,7 +67,7 @@ public class CalculatorInterfaceVM {
         //zero out balance
         BigDecimal VendingMachineApp = vendingMachine.getBalance().subtract(balance);
 
-        System.out.print(System.lineSeparator() + "Please take your change. Thank you and come again!");
+        System.out.println(System.lineSeparator() + "Please take your change. Thank you and come again!");
 
 
     }

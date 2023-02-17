@@ -90,6 +90,7 @@ public class VendingMachineCLI extends VendingMachineItem {
                 checkOut.finishChange(vendingMachine);
 
 
+
                 //This should give change and vend product and return to Main menu when completed
 
                 break;
