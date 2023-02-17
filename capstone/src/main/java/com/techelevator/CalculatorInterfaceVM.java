@@ -12,6 +12,9 @@ import java.util.TreeMap;
 public class CalculatorInterfaceVM {
 
     private Map<String, VendingMachineItem> productSelected = new TreeMap<>();
+    public Map<String, VendingMachineItem> getProductSelected() {
+        return productSelected;
+    }
     private BigDecimal balance = new BigDecimal(0);
 
     private PrintWriter out;
