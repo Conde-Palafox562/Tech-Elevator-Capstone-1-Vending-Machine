@@ -4,10 +4,15 @@ import java.math.BigDecimal;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 
 public class CalculatorInterfaceVM {
+
+    private Map<String, VendingMachineItem> productSelected = new TreeMap<>();
+    private BigDecimal balance = new BigDecimal(0);
 
     private PrintWriter out;
     private Scanner in;
