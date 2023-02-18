@@ -75,7 +75,7 @@ public class VendingMachineApp {
                 }
             }
         } catch (Exception ex) {
-            System.out.println("Something went wrong");
+            System.out.println("Oops, something went wrong!");
         }
     }
 

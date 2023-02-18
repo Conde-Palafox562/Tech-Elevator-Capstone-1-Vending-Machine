@@ -34,7 +34,7 @@ public class CalculatorInterfaceVM {
         //return change
 
 
-        System.out.println("Change dispensed: $" + vendingMachine.getBalance());
+        System.out.println(System.lineSeparator() + "Change dispensed: $" + vendingMachine.getBalance());
 
         BigDecimal changeBalance = vendingMachine.getBalance();
 
@@ -67,7 +67,7 @@ public class CalculatorInterfaceVM {
         //zero out balance
         BigDecimal VendingMachineApp = vendingMachine.getBalance().subtract(balance);
 
-        System.out.println(System.lineSeparator() + "Please take your change. Thank you and come again!");
+        System.out.println(System.lineSeparator() + "Please take your change. Thank you for choosing the Vendo-Matic 800!" + System.lineSeparator());
 
 
     }

@@ -61,7 +61,7 @@ public class VendingMachineCLI extends VendingMachineItem {
                 String customerMoney;
 
                 Scanner userInput = new Scanner(System.in);
-                System.out.print("Please insert bills only -> $1 / $5 / $10: ");
+                System.out.print(System.lineSeparator() + "Please insert bills only -> $1 / $5 / $10: ");
 
                 customerMoney = userInput.nextLine();
                 BigDecimal amount = new BigDecimal(customerMoney);
@@ -70,28 +70,21 @@ public class VendingMachineCLI extends VendingMachineItem {
 
            } else if (choice.equals(SUB_MENU_OPTION_SELECT_PRODUCT)) {
                 Scanner userInput = new Scanner(System.in);
-                System.out.print("Please enter the item slot number: ");
+                System.out.print(System.lineSeparator() + "Please enter the item slot number: ");
                 String productSelected = userInput.nextLine();
                 VendingMachineItem item = vendingMachine.getProductSelected().get(productSelected);
 
                 if(vendingMachine.getBalance().compareTo(item.getPrice())>=0){
                     System.out.println(item.getSound());
                     vendingMachine.setBalance(vendingMachine.getBalance().subtract(item.getPrice()));
-                    System.out.println("Your new balance is: $" + vendingMachine.getBalance());
+                    System.out.println(System.lineSeparator() + "Your new balance is: $" + vendingMachine.getBalance());
 
                 } else {
-                    System.out.println("Insufficient Funds please Feed Money");
+                    System.out.println(System.lineSeparator() + "Insufficient funds! Please feed more money.");
                 }
-
-                //Need to know if this is the right functionality^
-
 
             } else if (choice.equals(SUB_MENU_FINISH_TRANSACTION)) {
                 checkOut.finishChange(vendingMachine);
-
-
-
-                //This should give change and vend product and return to Main menu when completed
 
                 break;
             }
