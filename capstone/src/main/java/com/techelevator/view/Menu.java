@@ -36,19 +36,19 @@ public class Menu {
 			// eat the exception, an error message will be displayed below since choice will be null
 		}
 		if (choice == null) {
-			out.println(System.lineSeparator() + "*** " + userInput + " Sorry, item is *** SOLD OUT *** Please select a different item" + System.lineSeparator());
+			System.out.println(System.lineSeparator() + "*** " + userInput + " Sorry, item is *** SOLD OUT *** Please select a different item" + System.lineSeparator());
 		}
 		return choice;
 	}
 
 	private void displayMenuOptions(Object[] options) {
-		out.println();
+		System.out.println();
 		for (int i = 0; i < options.length; i++) {
 			int optionNum = i + 1;
-			out.println(optionNum + ") " + options[i]);
+			System.out.println(optionNum + ") " + options[i]);
 		}
-		out.print(System.lineSeparator() + "Please choose an option >>> ");
-		out.flush();
+		System.out.print(System.lineSeparator() + "Please choose an option >>> ");
+		System.out.flush();
 	}
 
 }

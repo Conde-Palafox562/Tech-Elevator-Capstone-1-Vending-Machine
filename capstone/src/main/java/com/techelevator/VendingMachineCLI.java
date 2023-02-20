@@ -74,6 +74,7 @@ public class VendingMachineCLI extends VendingMachineItem {
                 if(vendingMachine.getBalance().compareTo(item.getPrice())>=0){
                     System.out.println(item.getSound());
                     vendingMachine.setBalance(vendingMachine.getBalance().subtract(item.getPrice()));
+                    item.setQty(item.getQty()-1);
                     System.out.println(System.lineSeparator() + "Your new balance is: $" + vendingMachine.getBalance());
 
                 } else {
