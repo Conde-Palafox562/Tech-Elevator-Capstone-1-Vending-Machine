@@ -12,7 +12,7 @@ import java.util.TreeMap;
 public class CalculatorInterfaceVM {
 
     private Map<String, VendingMachineItem> productSelected = new TreeMap<>();
-    public VendingMachineApp vendingMachine = new VendingMachineApp();
+    //public VendingMachineApp vendingMachine = new VendingMachineApp();
 
     public CalculatorInterfaceVM() {
 
@@ -73,7 +73,7 @@ public class CalculatorInterfaceVM {
         BigDecimal VendingMachineApp = vendingMachine.getBalance().subtract(balance);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a ");
         LocalDateTime now = LocalDateTime.now();
-        writer.println(dtf.format(now) + "Change: $" + vendingMachine.getBalance());
+        writer.println(dtf.format(now) + " Change: $" + vendingMachine.getBalance());
 
         System.out.println(System.lineSeparator() + "Please take your change. Thank you for choosing the Vendo-Matic 800!" + System.lineSeparator());
     } catch (FileNotFoundException e) {
