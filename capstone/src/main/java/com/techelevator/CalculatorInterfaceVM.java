@@ -18,6 +18,7 @@ public class CalculatorInterfaceVM {
 
     }
 
+
     public Map<String, VendingMachineItem> getProductSelected() {
         return productSelected;
     }
