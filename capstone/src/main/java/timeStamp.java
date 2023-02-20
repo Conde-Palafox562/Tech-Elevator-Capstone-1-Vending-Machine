@@ -5,9 +5,9 @@ import java.io.PrintWriter;
 import java.time.format.DateTimeFormatter;
 
 public class timeStamp {
-    //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
+    //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
    // LocalDateTime now = LocalDateTime.now();
-    //System.out.println(dtf.format(now));
+    //writer.println(dtf.format(now));
 
     //Need Vending Log Class.. make the formatted time
     //setLoggedActivity

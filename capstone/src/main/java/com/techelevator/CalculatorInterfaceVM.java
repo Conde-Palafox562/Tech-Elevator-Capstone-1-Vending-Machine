@@ -1,9 +1,12 @@
 package com.techelevator;
 
+import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -64,8 +67,16 @@ public class CalculatorInterfaceVM {
 
         System.out.println("Quarters: " + quarters + ", " + "Dimes: " + dimes + ", " + "Nickels: " + nickels);
 
-        //zero out balance
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter("C:\\Users\\Student\\workspace\\kbjan-23-capstone-1-team-6\\capstone\\src\\main\\java\\Log.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         BigDecimal VendingMachineApp = vendingMachine.getBalance().subtract(balance);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
+        LocalDateTime now = LocalDateTime.now();
+        writer.println(dtf.format(now) + "Change: $" + vendingMachine.getBalance());
 
         System.out.println(System.lineSeparator() + "Please take your change. Thank you for choosing the Vendo-Matic 800!" + System.lineSeparator());
 

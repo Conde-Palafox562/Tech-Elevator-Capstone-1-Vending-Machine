@@ -3,7 +3,11 @@ package com.techelevator;
 import com.techelevator.view.Menu;
 
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class VendingMachineCLI extends VendingMachineItem {
@@ -33,6 +37,8 @@ public class VendingMachineCLI extends VendingMachineItem {
             System.out.println("Welcome to the Vendo-Matic 800!");
             System.out.println("*******************************");
 
+
+
             String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
             if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
@@ -53,16 +59,26 @@ public class VendingMachineCLI extends VendingMachineItem {
     public void runSubMenu() {
         while (true) {
             String choice = (String) menu.getChoiceFromOptions(SUB_MENU_OPTIONS);
+            PrintWriter writer = null;
+            try {
+                writer = new PrintWriter("C:\\Users\\Student\\workspace\\kbjan-23-capstone-1-team-6\\capstone\\src\\main\\java\\Log.txt");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
 
             if (choice.equals(SUB_MENU_OPTION_FEED_MONEY)) {
                 String customerMoney;
 
                 Scanner userInput = new Scanner(System.in);
+
                 System.out.print(System.lineSeparator() + "Please insert bills only -> $1 / $5 / $10: ");
 
                 customerMoney = userInput.nextLine();
                 BigDecimal amount = new BigDecimal(customerMoney);
                 vendingMachine.setBalance(amount.add(vendingMachine.getBalance()));
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
+                LocalDateTime now = LocalDateTime.now();
+                writer.println(dtf.format(now) +"FEED_MONEY: $" + amount + " $" + vendingMachine.getBalance());
                 System.out.println("Current balance is: $" + vendingMachine.getBalance());
 
            } else if (choice.equals(SUB_MENU_OPTION_SELECT_PRODUCT)) {
@@ -75,6 +91,9 @@ public class VendingMachineCLI extends VendingMachineItem {
                     System.out.println(item.getSound());
                     vendingMachine.setBalance(vendingMachine.getBalance().subtract(item.getPrice()));
                     item.setQty(item.getQty()-1);
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
+                    LocalDateTime now = LocalDateTime.now();
+                    writer.println(dtf.format(now) + getName() + getSlotNumber() + getPrice() + " $" + vendingMachine.getBalance());
                     System.out.println(System.lineSeparator() + "Your new balance is: $" + vendingMachine.getBalance());
 
                 } else {
