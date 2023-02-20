@@ -33,10 +33,16 @@ public class CalculatorInterfaceVM {
     }
 
     public void finishChange(VendingMachineApp vendingMachine) {
-        //return change
-
-
+        String logFile = "C:\\Users\\Student\\workspace\\kbjan-23-capstone-1-team-6\\capstone\\Log.txt";
+        try (PrintWriter writer = new PrintWriter(new FileOutputStream(logFile, true))) {
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a ");
+            LocalDateTime now = LocalDateTime.now();
+            writer.println(dtf.format(now) + "Change dispensed: $" + vendingMachine.getBalance());
         System.out.println(System.lineSeparator() + "Change dispensed: $" + vendingMachine.getBalance());
+            System.out.println(System.lineSeparator() + "Please take your change. Thank you for choosing the Vendo-Matic 800!" + System.lineSeparator());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         BigDecimal changeBalance = vendingMachine.getBalance();
 
@@ -67,18 +73,12 @@ public class CalculatorInterfaceVM {
         System.out.println("Quarters: " + quarters + ", " + "Dimes: " + dimes + ", " + "Nickels: " + nickels);
 
         //PrintWriter writer = null;
-        String logFile = "C:\\Users\\Student\\workspace\\kbjan-23-capstone-1-team-6\\capstone\\Log.txt";
-        try (PrintWriter writer = new PrintWriter(new FileOutputStream(logFile, true))) {
+
+
 
         BigDecimal VendingMachineApp = vendingMachine.getBalance().subtract(balance);
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a ");
-        LocalDateTime now = LocalDateTime.now();
-        writer.println(dtf.format(now) + " Change: $" + vendingMachine.getBalance());
 
-        System.out.println(System.lineSeparator() + "Please take your change. Thank you for choosing the Vendo-Matic 800!" + System.lineSeparator());
-    } catch (FileNotFoundException e) {
-        e.printStackTrace();
-    }
+
 
     }
 }
