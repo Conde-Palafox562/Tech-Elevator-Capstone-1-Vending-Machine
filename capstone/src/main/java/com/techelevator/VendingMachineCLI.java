@@ -4,6 +4,7 @@ import com.techelevator.view.Menu;
 
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -24,7 +25,7 @@ public class VendingMachineCLI extends VendingMachineItem {
     public Menu menu;
     public VendingMachineApp vendingMachine = new VendingMachineApp();
     private Map<String, VendingMachineItem> productSelected = new TreeMap<>();
-    private VendingMachineItem itemsInMachine = new VendingMachineItem();
+    public VendingMachineItem itemsInMachine = new VendingMachineItem();
     public CalculatorInterfaceVM checkOut = new CalculatorInterfaceVM();
 
     public VendingMachineCLI(Menu menu) {
@@ -59,52 +60,54 @@ public class VendingMachineCLI extends VendingMachineItem {
     public void runSubMenu() {
         while (true) {
             String choice = (String) menu.getChoiceFromOptions(SUB_MENU_OPTIONS);
-            PrintWriter writer = null;
-            try {
-                writer = new PrintWriter("C:\\Users\\Student\\workspace\\kbjan-23-capstone-1-team-6\\capstone\\src\\main\\java\\Log.txt");
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
 
-            if (choice.equals(SUB_MENU_OPTION_FEED_MONEY)) {
-                String customerMoney;
+            String logFile = "C:\\Users\\Student\\workspace\\kbjan-23-capstone-1-team-6\\capstone\\Log.txt";
+            try (PrintWriter writer = new PrintWriter(new FileOutputStream(logFile, true))) {
 
-                Scanner userInput = new Scanner(System.in);
 
-                System.out.print(System.lineSeparator() + "Please insert bills only -> $1 / $5 / $10: ");
+                if (choice.equals(SUB_MENU_OPTION_FEED_MONEY)) {
+                    String customerMoney;
 
-                customerMoney = userInput.nextLine();
-                BigDecimal amount = new BigDecimal(customerMoney);
-                vendingMachine.setBalance(amount.add(vendingMachine.getBalance()));
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
-                LocalDateTime now = LocalDateTime.now();
-                writer.println(dtf.format(now) +"FEED_MONEY: $" + amount + " $" + vendingMachine.getBalance());
-                System.out.println("Current balance is: $" + vendingMachine.getBalance());
+                    Scanner userInput = new Scanner(System.in);
 
-           } else if (choice.equals(SUB_MENU_OPTION_SELECT_PRODUCT)) {
-                Scanner userInput = new Scanner(System.in);
-                System.out.print(System.lineSeparator() + "Please enter the item slot number: ");
-                String productSelected = userInput.nextLine().toUpperCase(Locale.ROOT);
-                VendingMachineItem item = vendingMachine.getProductSelected().get(productSelected);
+                    System.out.print(System.lineSeparator() + "Please insert bills only -> $1 / $5 / $10: ");
 
-                if(vendingMachine.getBalance().compareTo(item.getPrice())>=0){
-                    System.out.println(item.getSound());
-                    vendingMachine.setBalance(vendingMachine.getBalance().subtract(item.getPrice()));
-                    item.setQty(item.getQty()-1);
-                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
+                    customerMoney = userInput.nextLine();
+                    BigDecimal amount = new BigDecimal(customerMoney);
+                    vendingMachine.setBalance(amount.add(vendingMachine.getBalance()));
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a ");
                     LocalDateTime now = LocalDateTime.now();
-                    writer.println(dtf.format(now) + getName() + getSlotNumber() + getPrice() + " $" + vendingMachine.getBalance());
-                    System.out.println(System.lineSeparator() + "Your new balance is: $" + vendingMachine.getBalance());
+                    writer.println(dtf.format(now) + " FEED_MONEY: $" + amount + " $" + vendingMachine.getBalance());
+                    System.out.println("Current balance is: $" + vendingMachine.getBalance());
 
-                } else {
-                    System.out.println(System.lineSeparator() + "Insufficient funds! Please feed more money.");
+                } else if (choice.equals(SUB_MENU_OPTION_SELECT_PRODUCT)) {
+                    Scanner userInput = new Scanner(System.in);
+                    System.out.print(System.lineSeparator() + "Please enter the item slot number: ");
+                    String productSelected = userInput.nextLine().toUpperCase(Locale.ROOT);
+                    VendingMachineItem item = vendingMachine.getProductSelected().get(productSelected);
+
+                    if (vendingMachine.getBalance().compareTo(item.getPrice()) >= 0) {
+                        System.out.println(item.getSound());
+                        vendingMachine.setBalance(vendingMachine.getBalance().subtract(item.getPrice()));
+                        item.setQty(item.getQty() - 1);
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
+                        LocalDateTime now = LocalDateTime.now();
+                        writer.println(dtf.format(now) + item.getName() + item.getSlotNumber() + item.getPrice() + " $" + vendingMachine.getBalance());
+
+                        System.out.println(System.lineSeparator() + "Your new balance is: $" + vendingMachine.getBalance());
+
+                    } else {
+                        System.out.println(System.lineSeparator() + "Insufficient funds! Please feed more money.");
+                    }
+
+                } else if (choice.equals(SUB_MENU_FINISH_TRANSACTION)) {
+                    checkOut.finishChange(vendingMachine);
+
+                    break;
                 }
-
-            } else if (choice.equals(SUB_MENU_FINISH_TRANSACTION)) {
-                checkOut.finishChange(vendingMachine);
-
-                break;
-            }
+            }catch (FileNotFoundException e) {
+                e.printStackTrace();
+        }
         }
     }
 

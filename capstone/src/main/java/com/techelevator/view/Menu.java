@@ -36,7 +36,7 @@ public class Menu {
 			// eat the exception, an error message will be displayed below since choice will be null
 		}
 		if (choice == null) {
-			System.out.println(System.lineSeparator() + "*** " + userInput + " Sorry, item is *** SOLD OUT *** Please select a different item" + System.lineSeparator());
+			System.out.println(System.lineSeparator() + "*** " + userInput + " Invalid Input try again. Thank you" + System.lineSeparator());
 		}
 		return choice;
 	}
