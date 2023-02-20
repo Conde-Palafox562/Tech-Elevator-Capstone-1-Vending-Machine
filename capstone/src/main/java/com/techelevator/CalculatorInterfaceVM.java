@@ -12,6 +12,7 @@ import java.util.TreeMap;
 public class CalculatorInterfaceVM {
 
     private Map<String, VendingMachineItem> productSelected = new TreeMap<>();
+    public VendingMachineApp vendingMachine = new VendingMachineApp();
 
     public CalculatorInterfaceVM() {
 
