@@ -4,10 +4,7 @@ import com.techelevator.view.Menu;
 
 
 import java.math.BigDecimal;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 
 public class VendingMachineCLI extends VendingMachineItem {
 
@@ -71,7 +68,7 @@ public class VendingMachineCLI extends VendingMachineItem {
            } else if (choice.equals(SUB_MENU_OPTION_SELECT_PRODUCT)) {
                 Scanner userInput = new Scanner(System.in);
                 System.out.print(System.lineSeparator() + "Please enter the item slot number: ");
-                String productSelected = userInput.nextLine();
+                String productSelected = userInput.nextLine().toUpperCase(Locale.ROOT);
                 VendingMachineItem item = vendingMachine.getProductSelected().get(productSelected);
 
                 if(vendingMachine.getBalance().compareTo(item.getPrice())>=0){
