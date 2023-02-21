@@ -17,7 +17,8 @@ public class timeStamp {
 
     //PrintWriter writer = new PrintWriter();
             //try open PrintWriter for loop need
-
+   // if(productSelected.getQty.isLessThan(1));
+   // System.out.println("Item is Sold Out. Please select a different Treat!")
 
 }
 
