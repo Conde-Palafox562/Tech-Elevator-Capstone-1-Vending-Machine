@@ -65,6 +65,7 @@ public class VendingMachineCLI extends VendingMachineItem {
             try (PrintWriter writer = new PrintWriter(new FileOutputStream(logFile, true))) {
 
 
+                VendingMachineItem item = null;
                 if (choice.equals(SUB_MENU_OPTION_FEED_MONEY)) {
                     String customerMoney;
 
@@ -84,25 +85,25 @@ public class VendingMachineCLI extends VendingMachineItem {
                     Scanner userInput = new Scanner(System.in);
                     System.out.print(System.lineSeparator() + "Please enter the item slot number: ");
                     String productSelected = userInput.nextLine().toUpperCase(Locale.ROOT);
-                    VendingMachineItem item = vendingMachine.getProductSelected().get(productSelected);
+                    item = vendingMachine.getProductSelected().get(productSelected);
 
 
-                    if(vendingMachine.getBalance().compareTo(item.getPrice()) >= 0 && item.getQty()== 0) {
+                    if (vendingMachine.getBalance().compareTo(item.getPrice()) >= 0 && item.getQty() == 0) {
                         System.out.println("Item is Sold Out. Please select a different Treat!");
+                        if (vendingMachine.getBalance().compareTo(item.getPrice()) <= 0)
+                            System.out.println(System.lineSeparator() + "Insufficient funds! Please feed more money.");
                     }
-                    if (vendingMachine.getBalance().compareTo(item.getPrice()) >= 0 && item.getQty()> 0) {
-                        System.out.println(item.getSound());
-                        vendingMachine.setBalance(vendingMachine.getBalance().subtract(item.getPrice()));
-                        item.setQty(item.getQty() - 1);
-                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a ");
-                        LocalDateTime now = LocalDateTime.now();
-                        writer.println(dtf.format(now) + item.getName() +" "+ item.getSlotNumber() + " " + item.getPrice() + " $" + vendingMachine.getBalance());
+                }
+                if (vendingMachine.getBalance().compareTo(item.getPrice()) >= 0 && item.getQty() > 0) {
+                    System.out.println(item.getSound());
+                    vendingMachine.setBalance(vendingMachine.getBalance().subtract(item.getPrice()));
+                    item.setQty(item.getQty() - 1);
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a ");
+                    LocalDateTime now = LocalDateTime.now();
+                    writer.println(dtf.format(now) + item.getName() + " " + item.getSlotNumber() + " " + item.getPrice() + " $" + vendingMachine.getBalance());
 
-                        System.out.println(System.lineSeparator() + "Your new balance is: $" + vendingMachine.getBalance());
+                    System.out.println(System.lineSeparator() + "Your new balance is: $" + vendingMachine.getBalance());
 
-                     if(vendingMachine.getBalance().compareTo(item.getPrice()) <= 0 )
-                        System.out.println(System.lineSeparator() + "Insufficient funds! Please feed more money.");
-                    }
 
                 } else if (choice.equals(SUB_MENU_FINISH_TRANSACTION)) {
                     checkOut.finishChange(vendingMachine);
