@@ -87,7 +87,9 @@ public class VendingMachineCLI extends VendingMachineItem {
                     VendingMachineItem item = vendingMachine.getProductSelected().get(productSelected);
 
 
-
+                    if(vendingMachine.getBalance().compareTo(item.getPrice()) >= 0 && item.getQty()== 0) {
+                        System.out.println("Item is Sold Out. Please select a different Treat!");
+                    }
                     if (vendingMachine.getBalance().compareTo(item.getPrice()) >= 0 && item.getQty()> 0) {
                         System.out.println(item.getSound());
                         vendingMachine.setBalance(vendingMachine.getBalance().subtract(item.getPrice()));
@@ -97,9 +99,7 @@ public class VendingMachineCLI extends VendingMachineItem {
                         writer.println(dtf.format(now) + item.getName() +" "+ item.getSlotNumber() + " " + item.getPrice() + " $" + vendingMachine.getBalance());
 
                         System.out.println(System.lineSeparator() + "Your new balance is: $" + vendingMachine.getBalance());
-                        if(vendingMachine.getBalance().compareTo(item.getPrice()) >= 0 && item.getQty()== 0) {
-                            System.out.println("Item is Sold Out. Please select a different Treat!");
-                        }
+
                      if(vendingMachine.getBalance().compareTo(item.getPrice()) <= 0 )
                         System.out.println(System.lineSeparator() + "Insufficient funds! Please feed more money.");
                     }
