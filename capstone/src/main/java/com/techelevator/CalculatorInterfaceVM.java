@@ -39,7 +39,7 @@ public class CalculatorInterfaceVM {
             LocalDateTime now = LocalDateTime.now();
             writer.println(dtf.format(now) + "Change dispensed: $" + vendingMachine.getBalance());
         System.out.println(System.lineSeparator() + "Change dispensed: $" + vendingMachine.getBalance());
-            System.out.println(System.lineSeparator() + "Please take your change. Thank you for choosing the Vendo-Matic 800!" + System.lineSeparator());
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -71,6 +71,8 @@ public class CalculatorInterfaceVM {
         }
 
         System.out.println("Quarters: " + quarters + ", " + "Dimes: " + dimes + ", " + "Nickels: " + nickels);
+
+        System.out.println(System.lineSeparator() + "Please take your change. Thank you for choosing the Vendo-Matic 800!" + System.lineSeparator());
 
         //PrintWriter writer = null;
 
