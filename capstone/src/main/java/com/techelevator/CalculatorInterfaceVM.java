@@ -8,16 +8,13 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-
 public class CalculatorInterfaceVM {
 
     private Map<String, VendingMachineItem> productSelected = new TreeMap<>();
-    //public VendingMachineApp vendingMachine = new VendingMachineApp();
 
     public CalculatorInterfaceVM() {
 
     }
-
 
     public Map<String, VendingMachineItem> getProductSelected() {
         return productSelected;
@@ -73,10 +70,6 @@ public class CalculatorInterfaceVM {
         System.out.println("Quarters: " + quarters + ", " + "Dimes: " + dimes + ", " + "Nickels: " + nickels);
 
         System.out.println(System.lineSeparator() + "Please take your change. Thank you for choosing the Vendo-Matic 800!" + System.lineSeparator());
-
-        //PrintWriter writer = null;
-
-
 
         BigDecimal VendingMachineApp = vendingMachine.getBalance().subtract(balance);
 

@@ -2,7 +2,6 @@ package com.techelevator;
 
 import com.techelevator.view.Menu;
 
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
@@ -39,7 +38,6 @@ public class VendingMachineCLI extends VendingMachineItem {
             System.out.println("*******************************");
 
 
-
             String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
             if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
@@ -52,6 +50,7 @@ public class VendingMachineCLI extends VendingMachineItem {
                 runSubMenu();
 
             } else if (choice.equals(MAIN_MENU_EXIT)) {
+                System.out.println(System.lineSeparator() + "Thank you for choosing the Vendo-Matic 800! We hope to see you again!");
                 break;
             }
         }
@@ -63,7 +62,6 @@ public class VendingMachineCLI extends VendingMachineItem {
 
             String logFile = "C:\\Users\\Student\\workspace\\kbjan-23-capstone-1-team-6\\capstone\\Log.txt";
             try (PrintWriter writer = new PrintWriter(new FileOutputStream(logFile, true))) {
-
 
                 if (choice.equals(SUB_MENU_OPTION_FEED_MONEY)) {
                     String customerMoney;
@@ -81,24 +79,24 @@ public class VendingMachineCLI extends VendingMachineItem {
                     System.out.println("Current balance is: $" + vendingMachine.getBalance());
 
                 } else if (choice.equals(SUB_MENU_OPTION_SELECT_PRODUCT)) {
+
                     for (Map.Entry<String, VendingMachineItem> entry : vendingMachine.getProductSelected().entrySet()) {
 
                         System.out.println(entry.getKey() + " " + entry.getValue().getName() + " " + entry.getValue().getPrice() + " " + entry.getValue().getQty());
                     }
-
 
                     Scanner userInput = new Scanner(System.in);
                     System.out.print(System.lineSeparator() + "Please enter the item slot number: ");
                     String productSelected = userInput.nextLine().toUpperCase(Locale.ROOT);
                     VendingMachineItem item = vendingMachine.getProductSelected().get(productSelected);
 
+                    if (vendingMachine.getBalance().compareTo(item.getPrice()) >= 0 && item.getQty() == 0) {
+                        System.out.println("Item is SOLD OUT! Please make a different selection.");
 
-                    if(vendingMachine.getBalance().compareTo(item.getPrice()) >= 0 && item.getQty()== 0) {
-                        System.out.println("Item is Sold Out. Please select a different Treat!");
-                    }else if(vendingMachine.getBalance().compareTo(item.getPrice()) <= 0 )
+                    } else if (vendingMachine.getBalance().compareTo(item.getPrice()) <= 0)
                         System.out.println(System.lineSeparator() + "Insufficient funds! Please feed more money.");
 
-                    else if (vendingMachine.getBalance().compareTo(item.getPrice()) >= 0 && item.getQty()> 0) {
+                    else if (vendingMachine.getBalance().compareTo(item.getPrice()) >= 0 && item.getQty() > 0) {
                         System.out.println(item.getSound());
                         vendingMachine.setBalance(vendingMachine.getBalance().subtract(item.getPrice()));
                         item.setQty(item.getQty() - 1);
@@ -109,15 +107,14 @@ public class VendingMachineCLI extends VendingMachineItem {
                         System.out.println(System.lineSeparator() + "Your new balance is: $" + vendingMachine.getBalance());
                     }
 
-
                 } else if (choice.equals(SUB_MENU_FINISH_TRANSACTION)) {
                     checkOut.finishChange(vendingMachine);
 
                     break;
                 }
-            }catch (FileNotFoundException e) {
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
-        }
+            }
         }
     }
 
